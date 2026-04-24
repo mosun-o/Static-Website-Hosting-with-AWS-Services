@@ -10,7 +10,8 @@ S3 stores the static website files and serves as the origin for the CloudFront d
 
 # Architecture
 
-<img width="904" height="316" alt="image" src="https://github.com/user-attachments/assets/e7ccc58e-d70d-4f41-9670-d44bf839cef1" />
+<img width="565" height="214" alt="diagram architecture" src="https://github.com/user-attachments/assets/1ac86fbb-d535-467a-b38e-08b8088c1f9b" />
+
 
 ## Request Flow
 - **1.** Users access the static website using the custom domain from anywhere in the world
@@ -53,14 +54,18 @@ Edge locations are globally distributed AWS data centers that cache content and 
 - Ensure **Block all public access** is enabled (this restricts direct public access to the bucket to enable access only via CloudFront)
 - Enable **Bucket Versioning** and **Create bucket** 
 
- <img width="1816" height="646" alt="image" src="https://github.com/user-attachments/assets/6dd57266-9930-4007-b982-4c3b0307b6a9" />
+
+<img width="1816" height="646" alt="s3" src="https://github.com/user-attachments/assets/4d91ef89-122f-4db8-a822-480237ac3ec0" />
+
  
  ## Upload Website Content
 - Open the created bucket
 - Go to the **Objects** tab and choose **Upload**
 - Select **Add files** to upload the website HTML file and choose **Upload**
 
-<img width="1794" height="595" alt="image" src="https://github.com/user-attachments/assets/00660cd6-9bdc-4c58-bd2e-feb46d252ae4" />
+
+<img width="1794" height="595" alt="file upload" src="https://github.com/user-attachments/assets/a2bf4d64-fc10-4e19-8bfd-77b4ee0fb59d" />
+
 
 ## 2. Create a CloudFront Distribution and Configure Bucket Policy
 - In AWS console, search and open CloudFront
@@ -79,9 +84,12 @@ Edge locations are globally distributed AWS data centers that cache content and 
 - Delete the default policy, paste the policy copied from CloudFront page, and choose **Save changes** (this creates S3 bucket policy for CloudFront to permit it to fetch content)
 - Return to CloudFront page, select **Distributions** under domain tab, copy the distribution domain name and paste on a new browser tab (this displays the content of the website served through CloudFront)
 
-## <img width="1836" height="745" alt="image" src="https://github.com/user-attachments/assets/0051d67a-1a32-4ac1-9ad4-a914d983edad" />
+<img width="1836" height="745" alt="cloudfront setting" src="https://github.com/user-attachments/assets/34932755-8fad-40c3-a902-fde4106ac969" />
 
-## <img width="1912" height="950" alt="image" src="https://github.com/user-attachments/assets/3673bfd0-4e7b-4e45-915a-b30e7d0f1a0a" />
+
+
+<img width="1912" height="950" alt="static cloudfront" src="https://github.com/user-attachments/assets/0a89a070-8bc6-41ca-a42b-506df257b72c" />
+
 
  ## 3. Create Hosted Zone in AWS Route 53
 - In AWS console, search and open Route 53
@@ -91,7 +99,9 @@ Edge locations are globally distributed AWS data centers that cache content and 
 - Under **Records** tab, locate and copy **Nameservers (NS)** records (they are four in total)
 - Go to the domain registrar (in my case, GoDaddy.com) and replace the default nameservers with the ones from Route 53. This will enables Route 53 to manage traffic for the custom domain
 
-<img width="1894" height="892" alt="image" src="https://github.com/user-attachments/assets/fa941ac2-2bb1-49da-975d-fb63cb13ea67" />
+<img width="1894" height="892" alt="godady dns" src="https://github.com/user-attachments/assets/67198f83-82b5-4045-b482-81b6046faf97" />
+
+
 
  ## 4. Generate SSL Certificate For CloudFront Distribution Using ACM
  - In AWS console, search and open Certificate Manager
@@ -102,9 +112,13 @@ Edge locations are globally distributed AWS data centers that cache content and 
  - (**Ensure the certificate is created in the us-east-1 (N.Virginia) region as CloudFront only supports certificates from this region**)
  - After requesting, the certificate status will show as **Pending validation**. Wait for DNS to propagate and refresh until the status changes to **Issued**
    
-<img width="1816" height="502" alt="image" src="https://github.com/user-attachments/assets/504d2122-80b2-4cec-bb00-db526fc111f3" />
+<img width="1816" height="502" alt="acm" src="https://github.com/user-attachments/assets/f33327c6-4779-4c55-b90c-ff8ab7e34077" />
 
-<img width="1243" height="577" alt="image" src="https://github.com/user-attachments/assets/9b8eabb3-c357-4300-9471-be45d28c011a" />
+
+
+<img width="1243" height="577" alt="acm certificate" src="https://github.com/user-attachments/assets/97165399-27a8-4131-90cd-e76b010eb038" />
+
+
 
 ## 5. Create DNS Record and Attach SSL to CloudFront
 - In Route 53, choose **Create record** under **Records** tab
@@ -128,12 +142,16 @@ Edge locations are globally distributed AWS data centers that cache content and 
 This creates an Alias A record that allows Route 53 to route traffic for the custom domain to CloudFront distribution without requiring an IP address
 
 
-<img width="1834" height="747" alt="image" src="https://github.com/user-attachments/assets/7eaa1605-2082-4925-ae13-c9decb67b06f" />
+<img width="1834" height="747" alt="cname" src="https://github.com/user-attachments/assets/d5e3e366-5e55-45a2-8aef-739e61c838c1" />
 
 
-  - ## The static website is now live and securely accessible via a custom domain over HTTPS through CloudFront
 
- <img width="1840" height="960" alt="image" src="https://github.com/user-attachments/assets/ffa80575-4d95-48b0-9a65-992f13ee386d" />
+## The static website is now live and securely accessible via a custom domain over HTTPS through CloudFront
+
+
+
+ <img width="1840" height="960" alt="final page" src="https://github.com/user-attachments/assets/b8cfba09-6c96-44fc-876c-004d6bab95e0" />
+
 
 
 
