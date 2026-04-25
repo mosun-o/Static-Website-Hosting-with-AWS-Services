@@ -8,7 +8,7 @@ This project demonstrates how **Amazon S3**, **Amazon CloudFront**, **Amazon Rou
 
 S3 stores the static website files and serves as the origin for the CloudFront distribution. CloudFront improves performance by caching content at edge locations worldwide and delivering it from the nearest location to users. Route 53 manages DNS resolution and routes user requests for the custom domain to the CloudFront distribution. ACM provisions and manages the SSL/TLS certificate used by CloudFront, enabling HTTPS and secure communication between clients (browsers) and the distribution.
 
-# Architecture
+# Architecture Diagram
 
 <img width="565" height="214" alt="diagram architecture" src="https://github.com/user-attachments/assets/1ac86fbb-d535-467a-b38e-08b8088c1f9b" />
 
