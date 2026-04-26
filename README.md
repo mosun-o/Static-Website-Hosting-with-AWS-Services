@@ -159,8 +159,6 @@ This creates an Alias A record that allows Route 53 to route traffic for the cus
 - **Infrastructure as Code (IaC)**: Provision and manage all AWS resources (S3, CloudFront, Route 53, ACM) using AWS CloudFormation or Terraform, replacing the manual console setup for repeatability and automation
 
 
-## License
-This project is licensed under the MIT License
 
 
 
