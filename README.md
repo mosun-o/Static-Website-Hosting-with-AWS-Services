@@ -2,11 +2,11 @@
 
 # Overview
 
-A static website serves prebuilt, fixed content such as HTML, CSS, JavaScript, and media files without executing business logic or querying a database. An example is GitHub Pages.
-
 This project demonstrates how **Amazon S3**, **Amazon CloudFront**, **Amazon Route 53**, and **AWS Certificate Manager (ACM)** integrate to host a fast, scalable, secure, and highly available static website with low latency global content delivery.
 
-S3 stores the static website files and serves as the origin for the CloudFront distribution. CloudFront improves performance by caching content at edge locations worldwide and delivering it from the nearest location to users. Route 53 manages DNS resolution and routes user requests for the custom domain to the CloudFront distribution. ACM provisions and manages the SSL/TLS certificate used by CloudFront, enabling HTTPS and secure communication between clients (browsers) and the distribution.
+
+A static website serves prebuilt, fixed content such as HTML, CSS, JavaScript, and media files without executing business logic or querying a database. An example is GitHub Pages
+
 
 # Architecture Diagram
 
@@ -32,10 +32,10 @@ Edge locations are globally distributed AWS data centers that cache content and 
 
 
 ## Architecture Components
-- **Amazon S3**: static website storage and origin for CloudFront
-- **Amazon CloudFront**: global content delivery and edge caching
-- **Amazon Route 53**: DNS resolution and domain routing
-- **AWS Certificate Manager (ACM)**: SSL/TLS certificate provisioning and management
+- **Amazon S3**: S3 stores the static website files and serves as the origin for the CloudFront distribution
+- **Amazon CloudFront**: CloudFront improves performance by caching content at edge locations worldwide and delivering it from the nearest location to users
+- **Amazon Route 53**: Route 53 manages DNS resolution and routes user requests for the custom domain to the CloudFront distribution
+- **AWS Certificate Manager (ACM)**: ACM provisions and manages the SSL/TLS certificate used by CloudFront, enabling HTTPS and secure communication between clients (browsers) and the distribution
 
 
 ## Prerequisites
