@@ -7,6 +7,8 @@ This project demonstrates how **Amazon S3**, **Amazon CloudFront**, **Amazon Rou
 
 A static website serves prebuilt, fixed content such as HTML, CSS, JavaScript, and media files without executing business logic or querying a database. An example is GitHub Pages
 
+A static website serves pre-generated files such as HTML, CSS, JavaScript, images, and other media directly to users without requiring server-side business logic or database queries to generate each page. An example is GitHub Pages
+
 
 # Architecture Diagram
 
